@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="main-style.css" />
+    <title>Sudoku Showdown</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="username">
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="btn-user">Enter</button>
+      </div>
+      <div id="loading-gif">
+        <img src="./gif/loading.gif" alt="Loading GIF" />
+      </div>
+      <div class="main-grid" id="main-grid">
+        <div class="users">
+          <div id="player">Player: <span id="playerName"></span></div>
+          <div id="opponent">Opponent: <span id="oppName"></span></div>
+        </div>
+        <div class="sudoku-container">
+          <div class="time">00:00</div>
+          <div class="sudoku-grid">
+            <!-- 81 grid cells -->
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+            <div class="main-grid-cell"></div>
+          </div>
+          <div class="numbers">
+            <div class="number">1</div>
+            <div class="number">2</div>
+            <div class="number">3</div>
+            <div class="number">4</div>
+            <div class="number">5</div>
+            <div class="number">6</div>
+            <div class="number">7</div>
+            <div class="number">8</div>
+            <div class="number">9</div>
+            <div class="delete" id="btn-del">X</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

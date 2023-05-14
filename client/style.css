@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+:root {
+  --blue: #307df6;
+  --light-blue: #d7e1f4;
+  --font-txt: Anton, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100wh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, var(--blue) 50%, var(--light-blue) 0);
+}
+
+.first-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  font-family: var(--font-txt);
+  font-size: 5rem;
+  letter-spacing: 0.3rem;
+  color: white;
+  text-align: center;
+}
+
+/* .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/Grid.png");
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 70%;
+  width: 100%;
+  color: var(--blue);
+  text-align: center;
+} */
+
+.logo-text {
+  width: 100%;
+}
+
+#logo-grid {
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+}
+
+.second-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+button {
+  font-family: var(--font-txt);
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  background-color: white;
+  color: var(--blue);
+  padding: 10px 80px;
+  border: solid 5px var(--blue);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--blue);
+  color: white;
+  border: solid 5px var(--light-blue);
+}
+
+.main {
+  height: 100vh;
+  width: 100wh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+input {
+  height: 100px;
+  width: 500px;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 5rem;
+  font-family: var(--font-txt);
+  border: solid 5px var(--blue);
+  color: var(--blue);
+  text-decoration: none;
+}
+
+input:focus {
+  outline: none;
+  border: solid 5px var(--light-blue);
+}
+
+::-webkit-input-placeholder {
+  color: #a3c6ff;
+}
+
+.main-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 5rem;
+  font-family: var(--font-txt);
+  font-size: 24px;
+}

@@ -1,0 +1,130 @@
+:root {
+  --bg-main: #f0f2f5;
+  --bg-body: #fff;
+  --color-txt: #000;
+  --filled-color: #000;
+  --filled-bg: #caf0f8;
+
+  --white: #fff;
+  --blue: #00aeef;
+  --red: #e91e63;
+  --black: #000;
+
+  --nav-size: 70px;
+  --sudoku-cell-size: 50px;
+  --sudoku-cell-size-mobile: 35px;
+
+  --border-radius: 10px;
+
+  --space-y: 20px;
+
+  --gap: 5px;
+  --gap-mobile: 3px;
+
+  --font-size: 1.5rem;
+  --font-size-lg: 2rem;
+  --font-size-xl: 3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.users {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.sudoku-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2.5rem;
+  padding-bottom: 10vh;
+}
+
+.time {
+  font-size: var(--font-size);
+}
+
+.sudoku-grid {
+  display: grid;
+  gap: var(--gap-mobile);
+  grid-template-columns: repeat(9, auto);
+}
+
+.main-grid-cell {
+  height: var(--sudoku-cell-size-mobile);
+  width: var(--sudoku-cell-size-mobile);
+  background-color: var(--bg-main);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size);
+  cursor: pointer;
+}
+
+.main-grid-cell.filled {
+  background-color: var(--filled-bg);
+  color: var(--filled-color);
+}
+
+.main-grid-cell.selected {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.main-grid-cell:hover {
+  border: 2px solid var(--blue);
+}
+
+.main-grid-cell.hover {
+  border: 3px solid var(--blue);
+}
+
+.numbers {
+  width: 30%;
+  margin-top: var(--space-y);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.number,
+.delete {
+  height: var(--sudoku-cell-size-mobile);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-main);
+  color: var(--color-txt);
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size);
+  cursor: pointer;
+}
+
+.delete {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.hide {
+  display: none;
+}
