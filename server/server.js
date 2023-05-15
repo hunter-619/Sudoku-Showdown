@@ -60,8 +60,8 @@ io.on("connection", (socket) => {
         };
 
         let sudoku = Sudoku.sudokuGen(3);
-        obj.p1.grid = sudoku.question;
-        obj.p2.grid = sudoku.question;
+        obj.p1.grid = JSON.parse(JSON.stringify(sudoku.question));
+        obj.p2.grid = JSON.parse(JSON.stringify(sudoku.question));
         obj.solution = sudoku.original;
 
         playingArr.push(obj);
@@ -85,8 +85,10 @@ io.on("connection", (socket) => {
       : (foundObject.p2.grid[input.row][input.col] = input.value);
 
     if (Sudoku.compareGrids(foundObject.p1.grid, foundObject.solution)) {
+      console.log(foundObject.p1.name);
       io.emit("Won", { winner: foundObject.p1.name });
     } else if (Sudoku.compareGrids(foundObject.p2.grid, foundObject.solution)) {
+      console.log(foundObject.p2.name);
       io.emit("Won", { winner: foundObject.p2.name });
     }
   });
