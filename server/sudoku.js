@@ -170,16 +170,32 @@ const removeCells = (grid, level) => {
 function sudokuGen(level) {
   let sudoku = newGrid(CONSTANT.GRID_SIZE);
   let check = sudokuCreate(sudoku);
+
+  let original = JSON.parse(JSON.stringify(sudoku));
+  console.log("Sudoku", original);
   if (check) {
     let question = removeCells(sudoku, level);
     return {
-      original: sudoku,
+      original: original,
       question: question,
     };
   }
   return undefined;
 }
 
+function compareGrids(arr1, arr2) {
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      if (arr1[i][j] != arr2[i][j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 module.exports = {
+  newGrid,
   sudokuGen,
+  compareGrids,
 };

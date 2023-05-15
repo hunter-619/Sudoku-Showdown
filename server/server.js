@@ -23,6 +23,16 @@ app.get("/main.html", (req, res) => {
 let players = [];
 let playingArr = [];
 
+const showTime = (seconds) =>
+  new Date(seconds * 1000).toISOString().substring(11, 19);
+
+const startTimer = (io, seconds) => {
+  timer = setInterval(() => {
+    seconds = seconds + 1;
+    io.emit("Time", showTime(seconds));
+  }, 1000);
+};
+
 io.on("connection", (socket) => {
   console.log("User Connected");
   socket.on("disconnect", (reason) => {
@@ -36,30 +46,50 @@ io.on("connection", (socket) => {
 
       if (players.length >= 2) {
         let p1obj = {
-          p1name: players[0],
-          p1grid: [],
+          name: players[0],
+          grid: Sudoku.newGrid(9),
         };
         let p2obj = {
-          p2name: players[1],
-          p2grid: [],
+          name: players[1],
+          grid: Sudoku.newGrid(9),
         };
         let obj = {
           p1: p1obj,
           p2: p2obj,
+          solution: [],
         };
 
-        let sudoku = Sudoku.sudokuGen(29);
-        obj.p1.p1grid = sudoku;
-        obj.p2.p2grid = sudoku;
+        let sudoku = Sudoku.sudokuGen(3);
+        obj.p1.grid = sudoku.question;
+        obj.p2.grid = sudoku.question;
+        obj.solution = sudoku.original;
 
         playingArr.push(obj);
         players.splice(0, 2);
         io.emit("find", { allPlayers: playingArr, sudoku: sudoku });
+        startTimer(io, 0);
       }
     }
   });
 
-  // socket.on("input", (cell) => {});
+  socket.on("input", (input) => {
+    const foundObject = playingArr.find(
+      (obj) =>
+        obj.p1.name == `${input.username}` || obj.p2.name == `${input.username}`
+    );
+
+    console.log(input.username, input.row, input.col, input.value);
+
+    foundObject.p1.name == `${input.username}`
+      ? (foundObject.p1.grid[input.row][input.col] = input.value)
+      : (foundObject.p2.grid[input.row][input.col] = input.value);
+
+    if (Sudoku.compareGrids(foundObject.p1.grid, foundObject.solution)) {
+      io.emit("Won", { winner: foundObject.p1.name });
+    } else if (Sudoku.compareGrids(foundObject.p2.grid, foundObject.solution)) {
+      io.emit("Won", { winner: foundObject.p2.name });
+    }
+  });
 });
 
 server.listen(port, () => {

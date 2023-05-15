@@ -114,7 +114,12 @@ const initNumberInputEvent = () => {
         // add to answer
         let row = Math.floor(selected_cell / CONSTANT.GRID_SIZE);
         let col = selected_cell % CONSTANT.GRID_SIZE;
-        socket.emit("input", { row: row, col: col });
+        socket.emit("input", {
+          username: username,
+          row: row,
+          col: col,
+          value: index + 1,
+        });
       }
     });
   });
@@ -163,7 +168,7 @@ const init = () => {
 socket.on("find", (e) => {
   if (e != null) {
     let allPlayersArr = e.allPlayers;
-    console.log(allPlayersArr);
+    // console.log(allPlayersArr);
 
     if (username != "") {
       document.getElementById("loading-gif").style.display = "none";
@@ -175,11 +180,11 @@ socket.on("find", (e) => {
     let oppName;
 
     const foundObject = allPlayersArr.find(
-      (obj) => obj.p1.p1name == `${username}` || obj.p2.p2name == `${username}`
+      (obj) => obj.p1.name == `${username}` || obj.p2.name == `${username}`
     );
-    foundObject.p1.p1name == `${username}`
-      ? (oppName = foundObject.p2.p2name)
-      : (oppName = foundObject.p1.p1name);
+    foundObject.p1.name == `${username}`
+      ? (oppName = foundObject.p2.name)
+      : (oppName = foundObject.p1.name);
 
     // console.log(oppName, value);
     document.getElementById("oppName").innerText = oppName;
@@ -199,6 +204,12 @@ socket.on("find", (e) => {
         cells[i].innerHTML = su.question[row][col];
       }
     }
-    startTimer();
+    socket.on("Time", (timer) => {
+      game_time.innerHTML = timer;
+    });
   }
+});
+
+socket.on("Won", (e) => {
+  alert(`${e.winner} Won The Game`);
 });
